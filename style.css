@@ -506,6 +506,15 @@ body.motion-off .blink {
   background: rgba(0,0,0,0.22);
 }
 
+.code-block {
+  background: rgba(0,0,0,0.4);
+  border: 2px solid var(--bevel-mid);
+  padding: 0.5rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
+}
+
 /* Retro dialog skin */
 .retro-dialog {
   padding: 0;
