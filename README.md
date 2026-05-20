@@ -13,8 +13,6 @@
 <p>
   After some time taking free classes from a random website that i don't even
   remember the name of anymore, i started making this, and eventually got it done.
-  Humanity really did invent the internet just so people like me could randomly
-  decide to suffer through CSS at 2 AM.
 </p>
 
 <p>
