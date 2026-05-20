@@ -3,20 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>PythonOS - GIFs</title>
-    <meta
-      name="description"
-      content="A retro GIF library page showing curated GIF assets with accessible preview."
-    />
+    <meta property="og:title"       content="GIFs • PythonOS" />
+    <meta property="og:description" content="A retro GIF library page showing curated GIF assets with accessible preview." />
+    <meta property="og:type"        content="website" />
+    <meta property="og:image"       content="assets/hyperlink.gif" />
+    <meta name="theme-color"        content="#050014" />
+    <title>GIFs • PythonOS</title>
+    <meta name="description" content="A retro GIF library page showing curated GIF assets with accessible preview." />
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="assets/favicon.ico">
+    <link rel="icon"       href="assets/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&display=swap" />
 
     <script defer src="script.js"></script>
   </head>
@@ -39,6 +38,8 @@
     </header>
 
     <main id="main" class="site-main">
+
+      <!-- GIF library table -->
       <section class="window" aria-labelledby="gif-library-title">
         <div class="window__titlebar">
           <h2 id="gif-library-title">GIF library</h2>
@@ -57,11 +58,7 @@
           <div class="gif-toolbar" aria-label="Filter and sort GIFs">
             <label class="small-field">
               Filter:
-              <input
-                id="gifFilter"
-                type="search"
-                placeholder="type to filter by name…"
-              />
+              <input id="gifFilter" type="search" placeholder="type to filter by name…" />
             </label>
 
             <label class="small-field">
@@ -73,9 +70,7 @@
               </select>
             </label>
 
-            <button type="button" id="gifSortDirBtn" aria-pressed="false">
-              Asc
-            </button>
+            <button type="button" id="gifSortDirBtn" aria-pressed="false">Asc</button>
 
             <label class="toggle">
               <input id="gifAutoplayToggle" type="checkbox" />
@@ -83,17 +78,11 @@
             </label>
           </div>
 
-          <div
-            class="table-scroller"
-            role="region"
-            aria-label="GIF table (scrollable)"
-          >
+          <div class="table-scroller" role="region" aria-label="GIF table (scrollable)">
             <table class="gif-table">
               <caption class="small">
-                Curated GIFs packaged with this site (edit #gifManifest to change
-                the list).
+                Curated GIFs packaged with this site. Edit the #gifManifest script block below to change the list.
               </caption>
-
               <thead>
                 <tr>
                   <th scope="col">Thumb</th>
@@ -105,23 +94,26 @@
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
-
               <tbody id="gifTbody">
-                <!-- JS renders rows -->
+                <!-- Rows are injected by script.js -->
               </tbody>
             </table>
           </div>
 
           <noscript>
             <p class="warning">
-              JavaScript is disabled — the GIF library list and preview won’t run,
+              JavaScript is disabled — the GIF library list and preview won't run,
               but the rest of the site still works.
             </p>
           </noscript>
         </div>
       </section>
 
-      <!-- Preselected GIF list for the library -->
+      <!--
+        GIF manifest — edit this JSON array to change which GIFs appear in the table.
+        Required fields: src
+        Optional fields: thumb, name, alt, width, height, bytes, licence, attribution, tags
+      -->
       <script type="application/json" id="gifManifest">
 [
   {
@@ -149,25 +141,19 @@
 ]
       </script>
 
-      <!-- Progressive enhancement preview fallback -->
-      <section
-        class="window"
-        id="gifInlinePreview"
-        hidden
-        aria-labelledby="gif-inline-title"
-      >
+      <!-- Inline preview panel — shown only in browsers that lack <dialog> support -->
+      <section class="window" id="gifInlinePreview" hidden aria-labelledby="gif-inline-title">
         <div class="window__titlebar">
           <h2 id="gif-inline-title">Preview</h2>
         </div>
         <div class="window__body">
           <p class="note">
-            Your browser doesn’t support the modal preview. This inline panel is
-            the fallback.
+            Your browser doesn't support the modal preview. This inline panel is the fallback.
           </p>
 
           <div class="gif-preview">
             <img id="gifPreviewStill" alt="Still preview" />
-            <img id="gifPreviewAnim" alt="" />
+            <img id="gifPreviewAnim"  alt="" />
           </div>
 
           <div class="controls">
@@ -180,24 +166,18 @@
         </div>
       </section>
 
-      <!-- Modal preview -->
+      <!-- Modal preview — preferred over the inline fallback -->
       <dialog id="gifModal" class="retro-dialog">
         <form method="dialog" class="retro-dialog__frame">
           <header class="retro-dialog__bar">
             <h3 id="gifModalTitle" class="retro-dialog__title">Preview</h3>
-            <button
-              class="retro-dialog__close"
-              value="close"
-              aria-label="Close preview"
-            >
-              ✕
-            </button>
+            <button class="retro-dialog__close" value="close" aria-label="Close preview">✕</button>
           </header>
 
           <div class="retro-dialog__body">
             <div class="gif-preview">
               <img id="gifModalStill" alt="Still preview" />
-              <img id="gifModalAnim" alt="" />
+              <img id="gifModalAnim"  alt="" />
             </div>
 
             <div class="controls">
@@ -209,10 +189,19 @@
           </div>
         </form>
       </dialog>
+
     </main>
 
     <footer class="site-footer">
-      <p>© <span id="year"></span> • GIFs page</p>
+      <p>© <span id="year"></span> • Hand‑coded for the web revival.</p>
+      <p>Made by Bernardo Lage, username: PythonRPG010.</p>
+      <p class="small">
+        <a href="links.html">Links</a> •
+        <a href="index.html">Home</a> •
+        <a href="projects.html">Projects</a> •
+        <!--<a href="gifs.html">GIFs</a> •-->
+        <a href="#main">Back to top</a>
+      </p>
     </footer>
   </body>
 </html>

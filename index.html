@@ -3,20 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>PythonOS - PythonRPG010's website</title>
-    <meta
-      name="description"
-      content="My own personal website, inspired by all the web revival people!"
-    />
+    <meta property="og:title"       content="Home • PythonOS" />
+    <meta property="og:description" content="My own personal website, inspired by all the web revival people!" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:image"       content="assets/hyperlink.gif" />
+    <meta name="theme-color"        content="#050014" />
+    <title>Home • PythonOS</title>
+    <meta name="description" content="My own personal website, inspired by all the web revival people!" />
 
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="assets/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet"   href="style.css" />
+    <link rel="icon"         href="assets/favicon.ico" />
+    <link rel="preconnect"   href="https://fonts.googleapis.com" />
+    <link rel="preconnect"   href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet"   href="https://fonts.googleapis.com/css2?family=VT323&family=Silkscreen:wght@400;700&display=swap" />
 
     <script defer src="script.js"></script>
   </head>
@@ -27,22 +26,19 @@
     <header class="site-header">
       <div class="masthead">
         <p class="kicker">
-          <span class="blink" aria-hidden="true">Version</span>
-          My own website • Bernardo Lage • 2026.0v
+          <span class="blink" aria-hidden="true">Updated!</span>
+          My own website • Bernardo Lage • 2026.5.1v
         </p>
 
-        <h1 class="site-title">PythonRPG010</h1>
+        <h1 class="site-title">Python OS</h1>
 
         <div class="marquee" aria-label="Welcome message">
-          <span class="marquee__sr"
-            >Welcome — explore links, GIFs, projects, and the web viewer.</span
-          >
+          <span class="marquee__sr">Welcome — explore links, GIFs, projects, and the web viewer.</span>
           <div class="marquee__viewport" aria-hidden="true">
             <div class="marquee__track">
-              <span
-                >★ Welcome to my corner of the Web ★ Links ★ GIFs ★ Projects ★ Pixel vibes ★</span>
-              <span
-                >★ Welcome to my corner of the Web ★ Links ★ GIFs ★ Projects ★ Pixel vibes ★</span>
+              <span>★ Welcome to my corner of the Web ★ Links ★ GIFs ★ Projects ★ Pixel vibes ★</span>
+              <span>★ Welcome to my corner of the Web ★ Links ★ GIFs ★ Projects ★ Pixel vibes ★</span>
+              <span>★ Welcome to my corner of the Web ★ Links ★ GIFs ★ Projects ★ Pixel vibes ★</span>
             </div>
           </div>
         </div>
@@ -51,80 +47,61 @@
       <nav class="site-nav" aria-label="Primary">
         <a href="index.html" aria-current="page">Home</a>
         <a href="links.html">Links</a>
-        <!--<a href="gifs.html">GIFs</a>-->
-        <a href="projects.html">Projects</a>
+        <!--<a href="projects.html">Projects</a>
+        <a href="gifs.html">GIFs</a>-->
       </nav>
     </header>
 
     <main id="main" class="site-main">
+
       <section class="window" aria-labelledby="about-title">
         <div class="window__titlebar">
           <h2 id="about-title">About</h2>
         </div>
-
         <div class="window__body">
           <p>
-            Welcome to my website! I am Bernardo Lage, known on the internet as PythonRPG010! 
-            I am a teen that discovered the web revival and it's movements, and decided to learn HTML, 
-            CSS and JS to make my own website. I love gaming and coding, so i naturally make games 
-            myself! If i ever release one of them, i'll link it here for you guys. My main hobby is playing
+            Welcome to my website! I am Bernardo Lage, known on the internet as PythonRPG010!
+            I am a teen that discovered the web revival and its movements, and decided to learn HTML,
+            CSS and JS to make my own website. I love gaming and coding, so I naturally make games
+            myself! If I ever release one of them, I'll link it here for you guys. My main hobby is playing
             Minecraft, and creating datapacks for it, as well as making modpacks! I'll publish some here.
           </p>
         </div>
       </section>
 
-      <section class="window" aria-labelledby="Sapphire Webring-title">
+      <section class="window" aria-labelledby="sapphire-title">
         <div class="window__titlebar">
-          <h2 id="about-title">Sapphire Webring</h2>
+          <h2 id="sapphire-title">Sapphire Webring</h2>
         </div>
-        
         <div class="window__body">
-              <span>
-                <a href="https://darkwing14.github.io/IndieWeb/" target="_blank">
-                  <img src="https://darkwing14.github.io/IndieWeb/resources/sapphireforkback.png" alt="Artwork Neocities button">
-                </a>
-                <a href="https://darkwing14.github.io/IndieWeb/sapphirefork" target="_blank">
-                  <img src="https://darkwing14.github.io/IndieWeb/resources/sapphireforkmiddle.png" alt="Artwork Neocities button">
-                </a>
-                <a href="https://purplestarship.neocities.org/HubPage" target="_blank">
-                  <img src="https://darkwing14.github.io/IndieWeb/resources/sapphireforknext.png" alt="Artwork Neocities button">
-                </a>
-                <h3>This is the Sapphire Fork webring!</h3>
-              </span>
+          <div class="webring-links">
+            <a href="https://darkwing14.github.io/IndieWeb/" target="_blank" rel="noopener noreferrer">
+              <img src="https://darkwing14.github.io/IndieWeb/resources/sapphireforkback.png" alt="Sapphire Fork — previous site" />
+            </a>
+            <a href="https://darkwing14.github.io/IndieWeb/sapphirefork" target="_blank" rel="noopener noreferrer">
+              <img src="https://darkwing14.github.io/IndieWeb/resources/sapphireforkmiddle.png" alt="Sapphire Fork — webring hub" />
+            </a>
+            <a href="https://purplestarship.neocities.org/HubPage" target="_blank" rel="noopener noreferrer">
+              <img src="https://darkwing14.github.io/IndieWeb/resources/sapphireforknext.png" alt="Sapphire Fork — next site" />
+            </a>
+            <h3>This is the Sapphire Fork webring!</h3>
+            <p>Click one of the arrows to go to a friend's website!</p>
           </div>
+        </div>
       </section>
 
       <section class="window" aria-labelledby="imagewall-title">
         <div class="window__titlebar">
           <h2 id="imagewall-title">Web Viewer</h2>
         </div>
-
         <div class="window__body">
-          <p class="note">
-            This viewer shows a curated set of images shipped with the site
-            (from <code>assets/</code>). There are no uploads and no local-file
-            access.
-          </p>
 
           <div class="controls" aria-label="Image wall controls">
-            <label class="small-field">
-              Interval (seconds):
-              <input id="intervalSeconds" type="number" min="2" max="60" value="8" />
-            </label>
-
             <button type="button" id="shuffleWallBtn">Shuffle</button>
-
-            <button type="button" id="startWallBtn">Start</button>
-            <button type="button" id="stopWallBtn" disabled>Stop</button>
-
-            <label class="toggle">
-              <input id="disableMotionToggle" type="checkbox" />
-              Disable animations
-            </label>
           </div>
 
           <p id="wallStatus" class="status" role="status" aria-live="polite">
-            Loading gallery…
+            Loaded Gallery.
           </p>
 
           <div id="imageGrid" class="image-grid" aria-label="Image tiles">
@@ -178,39 +155,90 @@
             </figure>
           </div>
 
-          <!-- Preselected image list for the Web Viewer -->
           <script type="application/json" id="imageWallManifest">
-[
-  {
-    "src": "assets/viewer/sample-1.gif",
-    "thumb": "assets/viewer/thumbs/sample-1.gif",
-    "alt": "Sample image one",
-    "caption": "Sample 1"
-  },
-  {
-    "src": "assets/viewer/sample-2.jpg",
-    "thumb": "assets/viewer/thumbs/sample-2.jpg",
-    "alt": "Sample image two (replace me)",
-    "caption": "Sample 2"
-  }
-]
+  [
+    {
+      "src": "assets/viewer/sample-1.gif",
+      "thumb": "assets/viewer/sample-1.gif",
+      "alt": "Sample image one",
+      "caption": "Sample."
+    },
+    {
+      "src": "assets/viewer/67_gone.gif",
+      "thumb": "assets/viewer/67_gone.gif",
+      "alt": "67 gone",
+      "caption": "Just a boy."
+    },
+    {
+      "src": "assets/viewer/cinema_gone.gif",
+      "thumb": "assets/viewer/cinema_gone.gif",
+      "alt": "absolute cinema gone",
+      "caption": "A chair."
+    },
+    {
+      "src": "assets/viewer/disintegrate_emoji.gif",
+      "thumb": "assets/viewer/disintegrate_emoji.gif",
+      "alt": "disintegrating emoji",
+      "caption": "HELP!"
+    },
+    {
+      "src": "assets/viewer/doom_emoji.gif",
+      "thumb": "assets/viewer/doom_emoji.gif",
+      "alt": "doom emoji",
+      "caption": "What..?"
+    },
+    {
+      "src": "assets/viewer/gem_gone.gif",
+      "thumb": "assets/viewer/gem_gone.gif",
+      "alt": "gem gone",
+      "caption": "Just a subway."
+    },
+    {
+      "src": "assets/viewer/hawk_gone.gif",
+      "thumb": "assets/viewer/hawk_gone.gif",
+      "alt": "hawk gone",
+      "caption": "Just a stadium."
+    },
+    {
+      "src": "assets/viewer/hello_emoji.gif",
+      "thumb": "assets/viewer/hello_emoji.gif",
+      "alt": "hello emoji",
+      "caption": "Hi! Hello!"
+    },
+    {
+      "src": "assets/viewer/mining_gone.gif",
+      "thumb": "assets/viewer/mining_gone.gif",
+      "alt": "mining gone",
+      "caption": "Just a mine."
+    },
+    {
+      "src": "assets/viewer/ok_emoji.gif",
+      "thumb": "assets/viewer/ok_emoji.gif",
+      "alt": "ok emoji",
+      "caption": "Okie-Dokie!"
+    }
+  ]
           </script>
 
           <noscript>
             <p class="warning">
-              JavaScript is disabled — the viewer won’t rotate/shuffle, but the
-              rest of the site still works.
+              JavaScript is disabled — the viewer won't shuffle, but the rest of the site still works.
             </p>
           </noscript>
+
         </div>
       </section>
+
     </main>
 
     <footer class="site-footer">
       <p>© <span id="year"></span> • Hand‑coded for the web revival.</p>
+      <p>Made by Bernardo Lage, username: PythonRPG010.</p>
       <p class="small">
-        <a href="links.html">Links</a> <!--• <a href="gifs.html">GIFs</a>--> •
-        <a href="projects.html">Projects</a> • <a href="#main">Back to top</a>
+        <a href="links.html">Links</a> •
+        <!--<a href="projects.html">Projects</a>
+        <a href="gifs.html">GIFs</a> •-->
+        <a href="#main">Back to top</a>
       </p>
     </footer>
   </body>

@@ -1,28 +1,40 @@
 /* ==========================================================
-   Retro Web Revival Theme (early‑2000s vibe, modern semantics)
+   PythonOS — style.css
+   Retro Web Revival theme (early-2000s vibe, modern semantics)
    ========================================================== */
 
-/* --- Palette tokens (see report table) --- */
+/* ----------------------------------------------------------
+   Design tokens
+   ---------------------------------------------------------- */
 :root {
-  --bg: #050014;
-  --panel: #0b1a33;
+  /* Background */
+  --bg:     #050014;
+  --panel:  #0b1a33;
   --panel2: #081024;
-  --text: #e7f2ff;
-  --muted: #b9c7dd;
 
-  --link: #00a2ff;
+  /* Text */
+  --text:   #e7f2ff;
+  --muted:  #b9c7dd;
+
+  /* Accents */
+  --link:    #00a2ff;
   --visited: #d16bff;
-  --accent: #44ff88;
-  --warn: #ffcc00;
-  --hot: #ff4d6d;
+  --accent:  #44ff88;
+  --warn:    #ffcc00;
+  --hot:     #ff4d6d;
 
+  /* Bevel colours (fake 3-D border effect) */
   --bevel-light: #c9d6ff;
-  --bevel-mid: #7f93c8;
-  --bevel-dark: #0b0b18;
+  --bevel-mid:   #7f93c8;
+  --bevel-dark:  #0b0b18;
 
+  /* Layout */
   --maxw: 980px;
 }
 
+/* ----------------------------------------------------------
+   Reset / base
+   ---------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -30,20 +42,18 @@
 }
 
 html {
-  /* Font-size left default to respect user preferences */
   color-scheme: dark;
 }
 
 body {
   margin: 0;
   color: var(--text);
-
-  /* Retro font stack: pixel/terminal feel first, then safe fallbacks */
   font-family: "VT323", "Courier New", Courier, monospace;
   letter-spacing: 0.2px;
-
-  /* Tiled background vibe (CSS-generated “pattern”) */
+  line-height: 1.5;
   background-color: var(--bg);
+
+  /* Subtle scanline + grid pattern */
   background-image:
     repeating-linear-gradient(
       0deg,
@@ -61,21 +71,18 @@ body {
     );
 }
 
-a {
-  color: var(--link);
-}
+a          { color: var(--link); }
+a:visited  { color: var(--visited); }
 
-a:visited {
-  color: var(--visited);
-}
-
-/* Strong focus cue “fits the era” (chunky + high contrast) */
+/* Chunky, high-contrast focus ring */
 :focus-visible {
   outline: 3px dashed var(--accent);
   outline-offset: 3px;
 }
 
-/* Skip link: hidden until focus */
+/* ----------------------------------------------------------
+   Skip link (hidden until focused)
+   ---------------------------------------------------------- */
 .skip-link {
   position: absolute;
   left: -999px;
@@ -92,7 +99,9 @@ a:visited {
   top: 0.75rem;
 }
 
-/* Layout container */
+/* ----------------------------------------------------------
+   Layout — centred column shared by header/main/footer
+   ---------------------------------------------------------- */
 .site-header,
 .site-main,
 .site-footer {
@@ -100,7 +109,9 @@ a:visited {
   margin-inline: auto;
 }
 
-/* Header */
+/* ----------------------------------------------------------
+   Header
+   ---------------------------------------------------------- */
 .site-header {
   padding: 1rem 0 0.75rem;
 }
@@ -126,36 +137,38 @@ a:visited {
   letter-spacing: 1px;
 }
 
-/* Nav bar */
+/* ----------------------------------------------------------
+   Navigation bar
+   ---------------------------------------------------------- */
 .site-nav {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
   margin-top: 0.75rem;
   padding: 0.75rem 0;
-
   border-top: 2px solid rgba(255,255,255,0.18);
 }
 
 .site-nav a {
   text-decoration: none;
   padding: 0.35rem 0.75rem;
-
   background: var(--panel);
   border: 2px solid var(--bevel-mid);
-
-  /* Faux bevel */
   box-shadow:
     inset 2px 2px 0 rgba(255,255,255,0.18),
     inset -2px -2px 0 rgba(0,0,0,0.45);
+  transition:
+    border-color 120ms ease,
+    transform     120ms ease,
+    background-color 120ms ease;
 }
 
-.site-nav a[aria-current="page"] {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+.site-nav a:hover          { border-color: var(--accent); transform: translateY(-1px); }
+.site-nav a[aria-current]  { border-color: var(--accent); color: var(--accent); }
 
-/* Marquee (decorative) */
+/* ----------------------------------------------------------
+   Marquee (decorative, pauses on hover)
+   ---------------------------------------------------------- */
 .marquee {
   margin-top: 0.75rem;
   border: 2px solid rgba(255,255,255,0.18);
@@ -163,8 +176,10 @@ a:visited {
   padding: 0.25rem 0.5rem;
 }
 
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+/* Screen-reader text (visually hidden) */
 .marquee__sr {
-  /* Screen-reader-only text */
   position: absolute;
   left: -9999px;
 }
@@ -186,8 +201,11 @@ a:visited {
   to   { transform: translateX(-50%); }
 }
 
-/* Window / panel */
+/* ----------------------------------------------------------
+   Window / panel component
+   ---------------------------------------------------------- */
 .window {
+  content-visibility: auto;
   margin: 1.25rem 0;
   background: var(--panel);
   border: 3px solid var(--bevel-mid);
@@ -214,6 +232,12 @@ a:visited {
   background: var(--panel2);
 }
 
+.window__body > p { max-width: 140ch; }
+
+
+/* ----------------------------------------------------------
+   Callout blocks
+   ---------------------------------------------------------- */
 .note {
   margin: 0.75rem 0;
   padding: 0.6rem 0.75rem;
@@ -229,7 +253,9 @@ a:visited {
   background: rgba(255, 77, 109, 0.12);
 }
 
-/* Controls */
+/* ----------------------------------------------------------
+   Controls toolbar
+   ---------------------------------------------------------- */
 .controls {
   display: flex;
   flex-wrap: wrap;
@@ -248,12 +274,13 @@ a:visited {
     inset 2px 2px 0 rgba(255,255,255,0.16),
     inset -2px -2px 0 rgba(0,0,0,0.45);
   cursor: pointer;
+  transition:
+    border-color 120ms ease,
+    transform     120ms ease;
 }
 
-.controls button:disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
+.controls button:hover    { border-color: var(--accent); transform: translateY(-1px); }
+.controls button:disabled { opacity: 0.55; cursor: not-allowed; }
 
 .file-label,
 .small-field,
@@ -264,33 +291,22 @@ a:visited {
   color: var(--muted);
 }
 
-.file-label input[type="file"] {
-  max-width: 16rem;
-}
+.file-label input[type="file"] { max-width: 16rem; }
 
-/* Drop zone */
-.drop-zone {
-  margin: 0.75rem 0;
-  padding: 0.85rem;
-  border: 2px dashed rgba(255,255,255,0.35);
-  background: rgba(0,0,0,0.25);
-}
-
-.drop-zone.is-dragover {
-  border-color: var(--accent);
-  background: rgba(68, 255, 136, 0.10);
-}
-
-/* Status text */
+/* ----------------------------------------------------------
+   Status line
+   ---------------------------------------------------------- */
 .status {
   margin: 0.5rem 0 0.25rem;
   color: var(--muted);
 }
 
-/* Image grid */
+/* ----------------------------------------------------------
+   Image wall / Web Viewer (index.html)
+   ---------------------------------------------------------- */
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
   gap: 0.75rem;
   padding: 0.75rem 0 0.25rem;
 }
@@ -303,7 +319,12 @@ a:visited {
     inset 2px 2px 0 rgba(255,255,255,0.12),
     inset -2px -2px 0 rgba(0,0,0,0.35);
   overflow: hidden;
+  transition:
+    border-color 120ms ease,
+    transform     120ms ease;
 }
+
+.image-tile:hover { border-color: var(--accent); transform: translateY(-2px); }
 
 .image-tile img {
   display: block;
@@ -321,7 +342,14 @@ a:visited {
   border-top: 1px solid rgba(255,255,255,0.12);
 }
 
-/* Projects grid */
+/* ----------------------------------------------------------
+   Webring links
+   ---------------------------------------------------------- */
+.webring-links img { max-width: 100%; height: auto; }
+
+/* ----------------------------------------------------------
+   Projects page
+   ---------------------------------------------------------- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -337,9 +365,7 @@ a:visited {
   background: rgba(0,0,0,0.18);
 }
 
-.project-figure {
-  margin: 0;
-}
+.project-figure { margin: 0; }
 
 .project-figure img {
   width: 100%;
@@ -354,6 +380,9 @@ a:visited {
   font-size: 1rem;
 }
 
+/* ----------------------------------------------------------
+   Utility classes
+   ---------------------------------------------------------- */
 .small {
   font-size: 0.95rem;
   color: var(--muted);
@@ -365,11 +394,22 @@ a:visited {
   background: rgba(0,0,0,0.25);
 }
 
-.tag--hot { color: var(--hot); border-color: rgba(255, 77, 109, 0.35); }
-.tag--ok  { color: var(--accent); border-color: rgba(68, 255, 136, 0.35); }
-.tag--warn { color: var(--warn); border-color: rgba(255, 204, 0, 0.35); }
+.tag--hot  { color: var(--hot);    border-color: rgba(255, 77, 109, 0.35); }
+.tag--ok   { color: var(--accent); border-color: rgba(68, 255, 136, 0.35); }
+.tag--warn { color: var(--warn);   border-color: rgba(255, 204, 0, 0.35); }
 
-/* Blinkie */
+.flex   { display: flex; }
+.center { display: grid; place-items: center; }
+.hidden { display: none !important; }
+
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+/* ----------------------------------------------------------
+   Blinkie badge
+   ---------------------------------------------------------- */
 .blink {
   display: inline-block;
   padding: 0.1rem 0.35rem;
@@ -384,31 +424,39 @@ a:visited {
   50% { opacity: 0; }
 }
 
-/* Motion controls: honour user preference + manual toggle */
-@media (prefers-reduced-motion: reduce) {
-  .marquee__track,
-  .blink {
-    animation: none !important;
-  }
+/* ----------------------------------------------------------
+   Preformatted / code blocks
+   ---------------------------------------------------------- */
+.code-block {
+  background: rgba(0,0,0,0.4);
+  border: 2px solid var(--bevel-mid);
+  padding: 0.5rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
 }
 
-body.motion-off .marquee__track,
-body.motion-off .blink {
-  animation: none !important;
+/* ----------------------------------------------------------
+   Optional CRT scanline overlay  (add class="crt" to <body>)
+   ---------------------------------------------------------- */
+body.crt::before {
+  z-index: 9999;
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
 }
 
-/* Footer */
-.site-footer {
-  padding: 1.25rem 0 2rem;
-  border-top: 2px solid rgba(255,255,255,0.18);
-  margin-top: 1.5rem;
-}
-
-/* ==========================================================
-   GIFs page additions (retro directory listing + dialog skin)
-   Append this to the end of style.css
-   ========================================================== */
-
+/* ----------------------------------------------------------
+   GIF library page (gifs.html)
+   ---------------------------------------------------------- */
 .gif-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -423,11 +471,10 @@ body.motion-off .blink {
   background: rgba(0,0,0,0.18);
 }
 
-/* Directory listing look */
 .gif-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 860px; /* allows horizontal scroll on small screens */
+  min-width: 860px; /* horizontal scroll on narrow viewports */
 }
 
 .gif-table th,
@@ -480,23 +527,13 @@ body.motion-off .blink {
   flex-wrap: wrap;
 }
 
-/* Preview area (used by dialog and inline fallback) */
+/* Preview area — used by both modal and inline fallback */
 .gif-preview {
   display: grid;
   gap: 0.75rem;
   align-items: start;
 }
 
-.gif-preview canvas,
-.gif-preview img {
-  width: 100%;
-  max-width: 520px;
-  height: auto;
-  border: 2px solid rgba(255,255,255,0.18);
-  background: rgba(0,0,0,0.22);
-}
-
-/* Hide the animated image until it has a src set */
 .gif-preview img {
   width: auto;
   max-width: min(100%, 256px);
@@ -506,16 +543,9 @@ body.motion-off .blink {
   background: rgba(0,0,0,0.22);
 }
 
-.code-block {
-  background: rgba(0,0,0,0.4);
-  border: 2px solid var(--bevel-mid);
-  padding: 0.5rem;
-  font-family: monospace;
-  font-size: 0.85rem;
-  overflow-x: auto;
-}
-
-/* Retro dialog skin */
+/* ----------------------------------------------------------
+   Retro <dialog> skin (GIF preview modal)
+   ---------------------------------------------------------- */
 .retro-dialog {
   padding: 0;
   border: 3px solid var(--bevel-mid);
@@ -523,14 +553,9 @@ body.motion-off .blink {
   box-shadow: 0 0 0 2px var(--bevel-dark);
 }
 
-.retro-dialog::backdrop {
-  background: rgba(0,0,0,0.65);
-}
+.retro-dialog::backdrop { background: rgba(0,0,0,0.65); }
 
-.retro-dialog__frame {
-  margin: 0;
-  padding: 0;
-}
+.retro-dialog__frame { margin: 0; padding: 0; }
 
 .retro-dialog__bar {
   display: flex;
@@ -560,4 +585,63 @@ body.motion-off .blink {
 .retro-dialog__body {
   padding: 0.85rem 0.9rem 1rem;
   background: var(--panel2);
+}
+
+/* ----------------------------------------------------------
+   Drop zone (available for future use)
+   ---------------------------------------------------------- */
+.drop-zone {
+  margin: 0.75rem 0;
+  padding: 0.85rem;
+  border: 2px dashed rgba(255,255,255,0.35);
+  background: rgba(0,0,0,0.25);
+}
+
+.drop-zone.is-dragover {
+  border-color: var(--accent);
+  background: rgba(68, 255, 136, 0.10);
+}
+
+/* ----------------------------------------------------------
+   Motion preferences
+   ---------------------------------------------------------- */
+
+/* Respect OS-level preference */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track,
+  .blink {
+    animation: none !important;
+  }
+}
+
+/* Manual toggle: add class="motion-off" to <body> */
+body.motion-off .marquee__track,
+body.motion-off .blink {
+  animation: none !important;
+}
+
+/* ----------------------------------------------------------
+   Responsive overrides
+   ---------------------------------------------------------- */
+@media (max-width: 600px) {
+  .site-header,
+  .site-main,
+  .site-footer {
+    width: min(var(--maxw), calc(100% - 1rem));
+  }
+
+  .controls,
+  .gif-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ----------------------------------------------------------
+   Footer
+   ---------------------------------------------------------- */
+.site-footer {
+  padding: 1.25rem 0 2rem;
+  border-top: 2px solid rgba(255,255,255,0.18);
+  margin-top: 1.5rem;
 }
